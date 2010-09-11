@@ -10,6 +10,13 @@ set wrap
 set complete=.,t
 imap <Tab> <C-N>
 syntax on
+set history=1000
+set wildmenu
+set wildmode=list:longest
+set title
+set scrolloff=3
+set backupdir=/tmp
+set visualbell
 
 " Set <Leader> to comma
 let mapleader = ','
