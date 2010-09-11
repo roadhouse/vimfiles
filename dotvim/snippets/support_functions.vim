@@ -1,0 +1,1 @@
+/private/tmp/snipmate-snippets/support_functions.vim

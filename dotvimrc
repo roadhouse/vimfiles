@@ -65,6 +65,9 @@ map <left> <C-w>h
 " Duplicate the selected line
 vmap D y'>p
 
+" Copy from clipboard
+map <leader>pc :r ! pbpaste
+
 " FuzzyFinder
 let g:fuzzy_ignore = '*.log;*.swp;*~;temp/*;log/*;tmp/*;coverage/*;README;*.jpg;*.png;*.gem'
 let g:fuzzy_enumerating_limit = 15
