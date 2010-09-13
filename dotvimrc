@@ -35,6 +35,8 @@ set ai " autoindent
 set si " smartindent
 
 " Make the status line more informative
+" let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
 set laststatus=2
 set statusline=%<buf:[%n]\ %f\ %h%m%r " buffer, filename, flags
 set statusline+=\ \ [
@@ -43,6 +45,11 @@ set statusline+=]\ "
 set statusline+=%=
 set statusline+=%(tag:[%{Tlist_Get_Tagname_By_Line()}]%)
 set statusline+=\ [%3.(%c%)\ %-7.(%l/%L%)]\ %P
+set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 
 " Search pattern highlight/incremental
 set ignorecase
