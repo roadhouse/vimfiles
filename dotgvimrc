@@ -1,9 +1,10 @@
+set background=dark
 set go-=T
 set guioptions-=r
-colorscheme torte
 set lines=10000
 set columns=10000
 set guifont=Monaco:h14
 set guioptions-=l
 set guioptions-=b
-
+colorscheme railscasts
+set transparency=4

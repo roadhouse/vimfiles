@@ -17,6 +17,7 @@ set wildmode=list:longest
 set scrolloff=3
 set backupdir=/tmp
 set visualbell
+" nnoremap ; :
 
 " Set <Leader> to comma
 let mapleader = ','
@@ -63,6 +64,9 @@ command! Rehash source ~/.vimrc
 command! Color echo g:colors_name
 command! Helptags helptags ~/.vim/doc
 
+" Save when lost focus
+:au FocusLost * :wa
+
 " Make the arrow keys switch between splits
 map <up> <C-w>k
 map <down> <C-w>j
@@ -73,7 +77,10 @@ map <left> <C-w>h
 vmap D y'>p
 
 " Copy from clipboard
-map <leader>pc :r ! pbpaste
+map <leader>pc :r ! pbpaste<CR>
+
+" Indent entire file
+map <leader>if ggVG=
 
 " FuzzyFinder
 let g:fuzzy_ignore = '*.log;*.swp;*~;temp/*;log/*;tmp/*;coverage/*;README;*.jpg;*.png;*.gem'
