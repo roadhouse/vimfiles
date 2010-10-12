@@ -17,8 +17,7 @@ set wildmode=list:longest
 set scrolloff=3
 set backupdir=/tmp
 set visualbell
-" nnoremap ; :
-
+set iskeyword-=_,$,@,%,#
 " Set <Leader> to comma
 let mapleader = ','
 
