@@ -72,6 +72,10 @@ map <down> <C-w>j
 map <right> <C-w>l
 map <left> <C-w>h
 
+" Navigation between buffers
+:nnoremap <A-D-right> :bnext<CR>
+:nnoremap <A-D-left> :bprevious<CR>
+
 " Duplicate the selected line
 vmap D y'>p
 
