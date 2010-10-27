@@ -64,7 +64,7 @@ command! Color echo g:colors_name
 command! Helptags helptags ~/.vim/doc
 
 " Save when lost focus
-:au FocusLost * :wa
+au FocusLost * :wa
 
 " Make the arrow keys switch between splits
 map <up> <C-w>k
@@ -79,6 +79,9 @@ map <left> <C-w>h
 " Duplicate the selected line
 vmap D y'>p
 
+
+" Added non ruby files in ruby syntax
+au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
 " Copy from clipboard
 map <leader>pc :r ! pbpaste<CR>
 
