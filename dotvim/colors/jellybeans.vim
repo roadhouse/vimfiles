@@ -38,6 +38,7 @@
 " THE SOFTWARE.
 
 set background=dark
+set transparency=4
 
 hi clear
 
