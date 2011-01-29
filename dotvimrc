@@ -4,7 +4,7 @@ set ruler
 set showmatch
 set autoindent
 set preserveindent
-set nu
+set relativenumber
 set cursorline
 set wrap
 set complete=.,t
@@ -13,6 +13,7 @@ syntax on
 set history=1000
 set wildmenu
 set wildmode=list:longest
+set hidden
 " set title
 set scrolloff=3
 set backupdir=/tmp
