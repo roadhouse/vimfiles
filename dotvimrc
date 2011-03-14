@@ -16,9 +16,14 @@ set wildmode=list:longest
 set hidden
 " set title
 set scrolloff=3
-set backupdir=/tmp
 set visualbell
 set iskeyword-=_,$,@,%,#
+
+" Setup backup location and enable
+set backup
+set backupdir=/tmp
+set directory=/tmp
+
 " Set <Leader> to comma
 let mapleader = ','
 
