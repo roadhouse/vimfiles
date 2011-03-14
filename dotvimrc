@@ -14,10 +14,13 @@ set history=1000
 set wildmenu
 set wildmode=list:longest
 set hidden
-" set title
 set scrolloff=3
 set visualbell
 set iskeyword-=_,$,@,%,#
+
+" pathogen setup
+call pathogen#runtime_append_all_bundles() 
+call pathogen#helptags()
 
 " Setup backup location and enable
 set backup
@@ -49,15 +52,11 @@ set statusline+=\ \ [
 set statusline+=%{strlen(&ft)?&ft:'none'} " filetype
 set statusline+=]\ "
 set statusline+=%=
-set statusline+=%(tag:[%{Tlist_Get_Tagname_By_Line()}]%)
 set statusline+=\ [%3.(%c%)\ %-7.(%l/%L%)]\ %P
 set statusline+=%*
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
-
-
 
 " Search pattern highlight/incremental
 set ignorecase
@@ -87,9 +86,9 @@ map <left> <C-w>h
 " Duplicate the selected line
 vmap D y'>p
 
-
 " Added non ruby files in ruby syntax
 au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
+
 " Copy from clipboard
 map <leader>pc :r ! pbpaste<CR>
 
@@ -97,23 +96,15 @@ map <leader>pc :r ! pbpaste<CR>
 map <leader>if ggVG=
 
 " FuzzyFinder
+let g:fuf_modesDisable = ['mrucmd', 'bookmarkdir', 'givenfile', 'givendir', 'givencmd', 'quickfix', 'jumplist', 'line']
+let g:fuf_fuzzyRefining = 1
 let g:fuzzy_ignore = '*.log;*.swp;*~;temp/*;log/*;tmp/*;coverage/*;README;*.jpg;*.png;*.gem'
+let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp|png|gif|jpg|log)$|(^|[/\\])\.(coverage|hg|git|bzr)($|[/\\])'
 let g:fuzzy_enumerating_limit = 15
 let g:fuzzy_matching_limit = 40
 let g:fuzzy_ceiling = 300000
 map <leader>bb :FufBuffer<CR>
 map <leader>ff :FufFile<CR>
-
-" NERDTree
-map <leader>d :NERDTreeToggle<CR>
-map <leader>dd :NERDTreeMirror<CR>
-let NERDTreeCaseSensitiveSort = 1
-let NERDTreeChDirMode = 2
-let NERDTreeIgnore = ['\~$','\.[ao]$','\.swp$','\.DS_Store','\.svn','\.CVS','\.git','\.pyc','\.pyo','log','tmp','coverage']
-let NERDTreeMouseMode = 2
-let NERDTreeShowLineNumbers = 0
-let NERDTreeWinSize = 30
-let NERDTreeHijackNetrw = 1
 
 " NERDCommenter
 let NERDSpaceDelims = 1
@@ -130,3 +121,4 @@ map <Leader>tu :TlistUpdate<CR>
 " Gist
 let g:gist_clip_command = 'pbcopy'
 let g:gist_open_browser_after_post = 1
+
