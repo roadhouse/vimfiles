@@ -40,3 +40,15 @@
 [submodule "dotvim/bundle/fuzzyfinder"]
 	path = dotvim/bundle/fuzzyfinder
 	url = https://github.com/vim-scripts/FuzzyFinder.git
+[submodule "dotvim/bundle/tabular"]
+	path = dotvim/bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "dotvim/bundle/colors-solarized"]
+	path = dotvim/bundle/colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "dotvim/bundle/railscasts-theme"]
+	path = dotvim/bundle/railscasts-theme
+	url = https://github.com/jpo/vim-railscasts-theme.git
+[submodule "dotvim/bundle/jellybeans-colors"]
+	path = dotvim/bundle/jellybeans-colors
+	url = https://github.com/nanotech/jellybeans.vim.git
