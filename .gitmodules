@@ -70,3 +70,6 @@
 	path = dotvim/bundle/jellybeans-colors
 	url = https://github.com/nanotech/jellybeans.vim.git
 	ignore = untracked
+[submodule "dotvim/bundle/wombat-colors"]
+	path = dotvim/bundle/wombat-colors
+	url = https://github.com/cschlueter/vim-wombat.git

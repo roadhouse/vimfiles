@@ -18,6 +18,7 @@ set scrolloff=3
 set visualbell
 set iskeyword-=_,$,@,%,#
 set foldmethod=indent
+set foldlevel=1
 
 " pathogen setup
 call pathogen#runtime_append_all_bundles() 
@@ -91,7 +92,7 @@ map <left> <C-w>h
 vmap D y'>p
 
 " Added non ruby files in ruby syntax
-au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
+au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.pryrc,.irbrc,irb_tempfile*} set ft=ruby
 
 " Copy from clipboard
 map <leader>pc :r ! pbpaste<CR>
