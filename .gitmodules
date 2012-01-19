@@ -73,3 +73,6 @@
 [submodule "dotvim/bundle/wombat-colors"]
 	path = dotvim/bundle/wombat-colors
 	url = https://github.com/cschlueter/vim-wombat.git
+[submodule "dotvim/bundle/tagbar"]
+	path = dotvim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
