@@ -1,5 +1,33 @@
 " Basic setup
 set nocompatible
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My bundles
+"
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'mileszs/ack.vim'
+Bundle 'clones/vim-autocomplpop'
+Bundle 'Raimondi/delimitMate'
+Bundle 'tpope/vim-endwise'
+Bundle 'mattn/gist-vim'
+Bundle 'tpope/vim-pastie'
+Bundle 'tpope/vim-rails'
+Bundle 'msanders/snipmate.vim'
+Bundle 'tpope/vim-surround'
+Bundle 'scrooloose/syntastic'
+Bundle 'godlygeek/tabular'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'cschlueter/vim-wombat'
+Bundle 'majutsushi/tagbar'
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+
 set ruler
 set showmatch
 set autoindent
@@ -18,6 +46,7 @@ set hidden
 set scrolloff=3
 set visualbell
 set iskeyword-=_,$,@,%,#
+colorscheme wombat256
 
 " Setup backup location and enable
 set backup
@@ -39,24 +68,6 @@ set expandtab
 set smarttab
 set ai " autoindent
 set si " smartindent
-
-" Make the status line more informative
-" let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
-set laststatus=2
-set statusline=%<buf:[%n]\ %f\ %h%m%r " buffer, filename, flags
-set statusline+=\ \ [
-set statusline+=%{strlen(&ft)?&ft:'none'} " filetype
-set statusline+=]\ "
-set statusline+=%=
-set statusline+=%(tag:[%{Tlist_Get_Tagname_By_Line()}]%)
-set statusline+=\ [%3.(%c%)\ %-7.(%l/%L%)]\ %P
-set statusline+=%*
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-
 
 
 " Search pattern highlight/incremental
@@ -87,22 +98,20 @@ map <left> <C-w>h
 " Duplicate the selected line
 vmap D y'>p
 
-
 " Added non ruby files in ruby syntax
 au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
+
 " Copy from clipboard
 map <leader>pc :r ! pbpaste<CR>
 
-" Indent entire file
-map <leader>if ggVG=
-
 " FuzzyFinder
 let g:fuzzy_ignore = '*.log;*.swp;*~;temp/*;log/*;tmp/*;coverage/*;README;*.jpg;*.png;*.gem'
+ "  Bundle 'gmarik/vundle'et g:fuzzy_ignore = '*.log;*.swp;*~;temp/*;log/*;tmp/*;coverage/*;README;*.jpg;*.png;*.gem'
 let g:fuzzy_enumerating_limit = 15
 let g:fuzzy_matching_limit = 40
 let g:fuzzy_ceiling = 300000
 map <leader>bb :FufBuffer<CR>
-map <leader>ff :FufFile<CR>
+map <leader>ff :FufCoverageFile<CR>
 
 " NERDTree
 map <leader>d :NERDTreeToggle<CR>
@@ -130,3 +139,21 @@ map <Leader>tu :TlistUpdate<CR>
 " Gist
 let g:gist_clip_command = 'pbcopy'
 let g:gist_open_browser_after_post = 1
+
+" TagBar
+map <Leader>m :TagbarToggle<CR>
+
+" Make the status line more informative
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
+set laststatus=2
+set statusline=%<buf:[%n]\ %f\ %h%m%r " buffer, filename, flags
+set statusline+=\ \ [
+set statusline+=%{strlen(&ft)?&ft:'none'} " filetype
+set statusline+=]\ "
+set statusline+=%=
+set statusline+=\ [%3.(%c%)\ %-7.(%l/%L%)]\ %P
+set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
