@@ -8,7 +8,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My bundles
-"
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'mileszs/ack.vim'
 Bundle 'clones/vim-autocomplpop'
@@ -27,6 +26,15 @@ Bundle 'cschlueter/vim-wombat'
 Bundle 'majutsushi/tagbar'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
+" Bundle 'janx/vim-rubytest'
+Bundle 'sickill/vim-pasta'
+Bundle 'millermedeiros/vim-statline'
+Bundle 'ZoomWin'
+Bundle 'skwp/vim-rspec'
+Bundle 'scrooloose/nerdtree'
+Bundle 'vim-scripts/argtextobj.vim'
+Bundle 'vim-scripts/simplefold'
+" Bundle 'reinh/vim-makegreen'
 
 set ruler
 set showmatch
@@ -47,6 +55,7 @@ set scrolloff=3
 set visualbell
 set iskeyword-=_,$,@,%,#
 colorscheme wombat256
+runtime macros/matchit.vim
 
 " Setup backup location and enable
 set backup
@@ -106,7 +115,6 @@ map <leader>pc :r ! pbpaste<CR>
 
 " FuzzyFinder
 let g:fuzzy_ignore = '*.log;*.swp;*~;temp/*;log/*;tmp/*;coverage/*;README;*.jpg;*.png;*.gem'
- "  Bundle 'gmarik/vundle'et g:fuzzy_ignore = '*.log;*.swp;*~;temp/*;log/*;tmp/*;coverage/*;README;*.jpg;*.png;*.gem'
 let g:fuzzy_enumerating_limit = 15
 let g:fuzzy_matching_limit = 40
 let g:fuzzy_ceiling = 300000
@@ -143,17 +151,10 @@ let g:gist_open_browser_after_post = 1
 " TagBar
 map <Leader>m :TagbarToggle<CR>
 
-" Make the status line more informative
+" Syntastic 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
-set laststatus=2
-set statusline=%<buf:[%n]\ %f\ %h%m%r " buffer, filename, flags
-set statusline+=\ \ [
-set statusline+=%{strlen(&ft)?&ft:'none'} " filetype
-set statusline+=]\ "
-set statusline+=%=
-set statusline+=\ [%3.(%c%)\ %-7.(%l/%L%)]\ %P
-set statusline+=%*
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+
+" rubytest
+let g:rubytest_cmd_example = "bundle exec rspec %p -l %c"
+let g:rubytest_cmd_spec = "bundle exec rspec %p"
