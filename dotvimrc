@@ -8,6 +8,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My bundles
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'mileszs/ack.vim'
 Bundle 'clones/vim-autocomplpop'
@@ -26,15 +27,16 @@ Bundle 'cschlueter/vim-wombat'
 Bundle 'majutsushi/tagbar'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
-" Bundle 'janx/vim-rubytest'
 Bundle 'sickill/vim-pasta'
 Bundle 'millermedeiros/vim-statline'
 Bundle 'ZoomWin'
-Bundle 'skwp/vim-rspec'
 Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/argtextobj.vim'
 Bundle 'vim-scripts/simplefold'
-" Bundle 'reinh/vim-makegreen'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'tsaleh/vim-align'
+Bundle 'HTML-AutoCloseTag'
 
 set ruler
 set showmatch
@@ -42,6 +44,7 @@ set autoindent
 set preserveindent
 set relativenumber
 set cursorline
+set cursorcolumn
 set wrap
 set complete=.,t
 imap <Tab> <C-N>
@@ -94,6 +97,8 @@ command! Helptags helptags ~/.vim/doc
 " Save when lost focus
 au FocusLost * :wa
 
+au FileType xhtml,xml,erb so ~/.vim/bundle/closetag.vim/
+
 " Make the arrow keys switch between splits
 map <up> <C-w>k
 map <down> <C-w>j
@@ -112,6 +117,9 @@ au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.irbrc
 
 " Copy from clipboard
 map <leader>pc :r ! pbpaste<CR>
+
+" Redraw panel when terminal mess up
+nnoremap <leader>rr :redraw!<cr>
 
 " FuzzyFinder
 let g:fuzzy_ignore = '*.log;*.swp;*~;temp/*;log/*;tmp/*;coverage/*;README;*.jpg;*.png;*.gem'
@@ -139,7 +147,7 @@ let NERDSpaceDelims = 1
 let Tlist_Display_Tag_Scope = 0
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Show_Menu = 1
-map <Leader>tt :TlistToggle<CR>
+map <Leader>tg :TlistToggle<CR>
 map <Leader>th :TlistHighlightTag<CR>
 map <Leader>tp :TlistShowPrototype<CR>
 map <Leader>tu :TlistUpdate<CR>
@@ -156,5 +164,8 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
 " rubytest
-let g:rubytest_cmd_example = "bundle exec rspec %p -l %c"
-let g:rubytest_cmd_spec = "bundle exec rspec %p"
+let g:rubytest_cmd_example = "rspec %p -l %c"
+let g:rubytest_cmd_spec = "rspec %p"
+
+
+autocmd BufNewFile,BufRead *_spec.rb compiler rspec
