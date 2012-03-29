@@ -37,6 +37,8 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'tsaleh/vim-align'
 Bundle 'HTML-AutoCloseTag'
+Bundle 'jordansissel/conque'
+" Bundle 'vim-scripts/Conque-Shell'
 
 set ruler
 set showmatch
@@ -93,6 +95,13 @@ set incsearch
 command! Rehash source ~/.vimrc
 command! Color echo g:colors_name
 command! Helptags helptags ~/.vim/doc
+
+" Highlight the current word
+nnoremap <silent> <leader>h :execute 'match W1 /\<<c-r><c-w>\>/'<cr>
+hi W1 guibg=#aeee00 guifg=#000000 ctermbg=154 ctermfg=16
+
+" Clear the highlight
+map <leader>\h :call clearmatches()<CR>
 
 " Save when lost focus
 au FocusLost * :wa
