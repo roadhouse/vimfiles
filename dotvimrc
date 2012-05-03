@@ -12,7 +12,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'mileszs/ack.vim'
 Bundle 'clones/vim-autocomplpop'
-Bundle 'Raimondi/delimitMate'
+" Bundle 'Raimondi/delimitMate'
 Bundle 'tpope/vim-endwise'
 Bundle 'mattn/gist-vim'
 Bundle 'tpope/vim-pastie'
@@ -38,8 +38,10 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'tsaleh/vim-align'
 Bundle 'HTML-AutoCloseTag'
 Bundle 'jordansissel/conque'
+Bundle 'kana/vim-smartinput'
 " Bundle 'vim-scripts/Conque-Shell'
 
+" My configuration
 set ruler
 set showmatch
 set autoindent
@@ -60,7 +62,7 @@ set scrolloff=3
 set visualbell
 set iskeyword-=_,$,@,%,#
 colorscheme wombat256
-runtime macros/matchit.vim
+" runtime macros/matchit.vim
 
 " Setup backup location and enable
 set backup
@@ -117,6 +119,7 @@ map <left> <C-w>h
 " Navigation between buffers
 :nnoremap <A-D-right> :bnext<CR>
 :nnoremap <A-D-left> :bprevious<CR>
+map <leader>l :e#<cr>
 
 " Duplicate the selected line
 vmap D y'>p
@@ -175,6 +178,4 @@ let g:syntastic_auto_loc_list=1
 " rubytest
 let g:rubytest_cmd_example = "rspec %p -l %c"
 let g:rubytest_cmd_spec = "rspec %p"
-
-
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
