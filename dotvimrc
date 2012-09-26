@@ -12,7 +12,6 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'mileszs/ack.vim'
 Bundle 'clones/vim-autocomplpop'
-" Bundle 'Raimondi/delimitMate'
 Bundle 'tpope/vim-endwise'
 Bundle 'mattn/gist-vim'
 Bundle 'tpope/vim-pastie'
@@ -39,6 +38,8 @@ Bundle 'tsaleh/vim-align'
 Bundle 'HTML-AutoCloseTag'
 Bundle 'jordansissel/conque'
 Bundle 'kana/vim-smartinput'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'wincent/Command-T'
 " Bundle 'vim-scripts/Conque-Shell'
 
 " My configuration
@@ -57,7 +58,7 @@ set history=1000
 set wildmenu
 set wildmode=list:longest
 set hidden
-" set title
+set title
 set scrolloff=3
 set visualbell
 set iskeyword-=_,$,@,%,#
@@ -179,3 +180,9 @@ let g:syntastic_auto_loc_list=1
 let g:rubytest_cmd_example = "rspec %p -l %c"
 let g:rubytest_cmd_spec = "rspec %p"
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
+
+" Vim-powerline
+" let g:Powerline_symbols = 'fancy'
+
+" Command-T
+:set wildignore+=*.o,*.obj,.git,spec/fixtures/cassetes/**
