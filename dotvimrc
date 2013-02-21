@@ -26,7 +26,6 @@ Bundle 'cschlueter/vim-wombat'
 Bundle 'majutsushi/tagbar'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
-Bundle 'sickill/vim-pasta'
 Bundle 'millermedeiros/vim-statline'
 Bundle 'ZoomWin'
 Bundle 'scrooloose/nerdtree'
@@ -34,36 +33,40 @@ Bundle 'vim-scripts/argtextobj.vim'
 Bundle 'vim-scripts/simplefold'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'tsaleh/vim-align'
-Bundle 'HTML-AutoCloseTag'
-Bundle 'jordansissel/conque'
 Bundle 'kana/vim-smartinput'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'wincent/Command-T'
-" Bundle 'vim-scripts/Conque-Shell'
+Bundle 'jgdavey/tslime.vim'
+Bundle 'jgdavey/vim-turbux'
+Bundle 'tomtom/quickfixsigns_vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-git'
+" Bundle 'vim-scripts/conque-shell'
+" Bundle 'skwp/vim-ruby-conque'
 
 " My configuration
-set ruler
-set showmatch
+colorscheme wombat256
+imap <Tab> <C-N>
+runtime macros/matchit.vim
 set autoindent
+set complete=.,t
+set cursorcolumn
+set cursorline
+set foldmethod=indent
+set foldlevel=1
+set hidden
+set history=1000
+set iskeyword-=_,$,@,%,#
 set preserveindent
 set relativenumber
-set cursorline
-set cursorcolumn
-set wrap
-set complete=.,t
-imap <Tab> <C-N>
-syntax on
-set history=1000
+set ruler
+set scrolloff=3
+set showmatch
+set title
+set visualbell
 set wildmenu
 set wildmode=list:longest
-set hidden
-set title
-set scrolloff=3
-set visualbell
-set iskeyword-=_,$,@,%,#
-colorscheme wombat256
-" runtime macros/matchit.vim
+set wrap
+syntax on
 
 " Setup backup location and enable
 set backup
@@ -99,17 +102,8 @@ command! Rehash source ~/.vimrc
 command! Color echo g:colors_name
 command! Helptags helptags ~/.vim/doc
 
-" Highlight the current word
-nnoremap <silent> <leader>h :execute 'match W1 /\<<c-r><c-w>\>/'<cr>
-hi W1 guibg=#aeee00 guifg=#000000 ctermbg=154 ctermfg=16
-
-" Clear the highlight
-map <leader>\h :call clearmatches()<CR>
-
 " Save when lost focus
 au FocusLost * :wa
-
-au FileType xhtml,xml,erb so ~/.vim/bundle/closetag.vim/
 
 " Make the arrow keys switch between splits
 map <up> <C-w>k
@@ -117,22 +111,18 @@ map <down> <C-w>j
 map <right> <C-w>l
 map <left> <C-w>h
 
+"toggle unfold
+" nnoremap <space> za 
+" vnoremap <space> za 
+
 " Navigation between buffers
-:nnoremap <A-D-right> :bnext<CR>
-:nnoremap <A-D-left> :bprevious<CR>
 map <leader>l :e#<cr>
 
-" Duplicate the selected line
-vmap D y'>p
-
 " Added non ruby files in ruby syntax
-au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
+au BufRead,BufNewFile {Procfile,Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
 
 " Copy from clipboard
 map <leader>pc :r ! pbpaste<CR>
-
-" Redraw panel when terminal mess up
-nnoremap <leader>rr :redraw!<cr>
 
 " FuzzyFinder
 let g:fuzzy_ignore = '*.log;*.swp;*~;temp/*;log/*;tmp/*;coverage/*;README;*.jpg;*.png;*.gem'
@@ -176,13 +166,59 @@ map <Leader>m :TagbarToggle<CR>
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
-" rubytest
-let g:rubytest_cmd_example = "rspec %p -l %c"
-let g:rubytest_cmd_spec = "rspec %p"
-autocmd BufNewFile,BufRead *_spec.rb compiler rspec
-
 " Vim-powerline
 " let g:Powerline_symbols = 'fancy'
 
 " Command-T
-:set wildignore+=*.o,*.obj,.git,spec/fixtures/cassetes/**
+set wildignore+=*.o,*.obj,.git,spec/fixtures/cassetes/**,vendor/**,bin_stubs/**
+au BufRead,BufNewFile {Procfile,Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
+
+" Copy from clipboard
+map <leader>pc :r ! pbpaste<CR>
+
+" Redraw panel when terminal mess up
+nnoremap <leader>rr :redraw!<cr>
+
+" FuzzyFinder
+let g:fuzzy_ignore = '*.log;*.swp;*~;temp/*;log/*;tmp/*;coverage/*;README;*.jpg;*.png;*.gem'
+let g:fuzzy_enumerating_limit = 15
+let g:fuzzy_matching_limit = 40
+let g:fuzzy_ceiling = 300000
+map <leader>bb :FufBuffer<CR>
+map <leader>ff :FufCoverageFile<CR>
+
+" NERDTree
+map <leader>d :NERDTreeToggle<CR>
+map <leader>dd :NERDTreeMirror<CR>
+let NERDTreeCaseSensitiveSort = 1
+let NERDTreeChDirMode = 2
+let NERDTreeIgnore = ['\~$','\.[ao]$','\.swp$','\.DS_Store','\.svn','\.CVS','\.git','\.pyc','\.pyo','log','tmp','coverage']
+let NERDTreeMouseMode = 2
+let NERDTreeShowLineNumbers = 0
+let NERDTreeWinSize = 30
+let NERDTreeHijackNetrw = 1
+
+" NERDCommenter
+let NERDSpaceDelims = 1
+
+" taglist
+let Tlist_Display_Tag_Scope = 0
+let Tlist_File_Fold_Auto_Close = 1
+let Tlist_Show_Menu = 1
+map <Leader>tg :TlistToggle<CR>
+map <Leader>th :TlistHighlightTag<CR>
+map <Leader>tp :TlistShowPrototype<CR>
+map <Leader>tu :TlistUpdate<CR>
+
+" Gist
+let g:gist_clip_command = 'pbcopy'
+let g:gist_open_browser_after_post = 1
+
+" Syntastic 
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
+
+" Tslime
+vmap <C-c><C-c> <Plug>SendSelectionToTmux
+nmap <C-c><C-c> <Plug>NormalModeSendToTmux
+nmap <C-c>r <Plug>SetTmuxVars
