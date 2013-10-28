@@ -14,39 +14,33 @@ Bundle 'mileszs/ack.vim'
 Bundle 'clones/vim-autocomplpop'
 Bundle 'tpope/vim-endwise'
 Bundle 'mattn/gist-vim'
-Bundle 'tpope/vim-pastie'
 Bundle 'tpope/vim-rails'
 Bundle 'msanders/snipmate.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/syntastic'
 Bundle 'godlygeek/tabular'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'nanotech/jellybeans.vim'
 Bundle 'cschlueter/vim-wombat'
-Bundle 'majutsushi/tagbar'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
-Bundle 'millermedeiros/vim-statline'
 Bundle 'ZoomWin'
-Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/argtextobj.vim'
 Bundle 'vim-scripts/simplefold'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'kana/vim-smartinput'
+
+" Change to airline https://github.com/bling/vim-airline
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'jgdavey/tslime.vim'
-Bundle 'jgdavey/vim-turbux'
+
 Bundle 'tomtom/quickfixsigns_vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
-" Bundle 'vim-scripts/conque-shell'
-" Bundle 'skwp/vim-ruby-conque'
 
 " My configuration
 colorscheme wombat256
 imap <Tab> <C-N>
 runtime macros/matchit.vim
+
 set autoindent
 set complete=.,t
 set cursorcolumn
@@ -66,6 +60,7 @@ set visualbell
 set wildmenu
 set wildmode=list:longest
 set wrap
+
 syntax on
 
 " Setup backup location and enable
@@ -112,8 +107,8 @@ map <right> <C-w>l
 map <left> <C-w>h
 
 "toggle unfold
-" nnoremap <space> za 
-" vnoremap <space> za 
+nnoremap <space> za 
+vnoremap <space> za 
 
 " Navigation between buffers
 map <leader>l :e#<cr>
@@ -132,17 +127,6 @@ let g:fuzzy_ceiling = 300000
 map <leader>bb :FufBuffer<CR>
 map <leader>ff :FufCoverageFile<CR>
 
-" NERDTree
-map <leader>d :NERDTreeToggle<CR>
-map <leader>dd :NERDTreeMirror<CR>
-let NERDTreeCaseSensitiveSort = 1
-let NERDTreeChDirMode = 2
-let NERDTreeIgnore = ['\~$','\.[ao]$','\.swp$','\.DS_Store','\.svn','\.CVS','\.git','\.pyc','\.pyo','log','tmp','coverage']
-let NERDTreeMouseMode = 2
-let NERDTreeShowLineNumbers = 0
-let NERDTreeWinSize = 30
-let NERDTreeHijackNetrw = 1
-
 " NERDCommenter
 let NERDSpaceDelims = 1
 
@@ -159,15 +143,9 @@ map <Leader>tu :TlistUpdate<CR>
 let g:gist_clip_command = 'pbcopy'
 let g:gist_open_browser_after_post = 1
 
-" TagBar
-map <Leader>m :TagbarToggle<CR>
-
 " Syntastic 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
-
-" Vim-powerline
-" let g:Powerline_symbols = 'fancy'
 
 " Command-T
 set wildignore+=*.o,*.obj,.git,spec/fixtures/cassetes/**,vendor/**,bin_stubs/**
@@ -180,23 +158,12 @@ map <leader>pc :r ! pbpaste<CR>
 nnoremap <leader>rr :redraw!<cr>
 
 " FuzzyFinder
-let g:fuzzy_ignore = '*.log;*.swp;*~;temp/*;log/*;tmp/*;coverage/*;README;*.jpg;*.png;*.gem'
+let g:fuzzy_ignore = '*.log;*.swp;*~;temp/*;log/*;tmp/*;coverage/*;README;*.jpg;*.png;*.gem;vendor/*'
 let g:fuzzy_enumerating_limit = 15
 let g:fuzzy_matching_limit = 40
 let g:fuzzy_ceiling = 300000
 map <leader>bb :FufBuffer<CR>
 map <leader>ff :FufCoverageFile<CR>
-
-" NERDTree
-map <leader>d :NERDTreeToggle<CR>
-map <leader>dd :NERDTreeMirror<CR>
-let NERDTreeCaseSensitiveSort = 1
-let NERDTreeChDirMode = 2
-let NERDTreeIgnore = ['\~$','\.[ao]$','\.swp$','\.DS_Store','\.svn','\.CVS','\.git','\.pyc','\.pyo','log','tmp','coverage']
-let NERDTreeMouseMode = 2
-let NERDTreeShowLineNumbers = 0
-let NERDTreeWinSize = 30
-let NERDTreeHijackNetrw = 1
 
 " NERDCommenter
 let NERDSpaceDelims = 1
@@ -217,8 +184,3 @@ let g:gist_open_browser_after_post = 1
 " Syntastic 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
-
-" Tslime
-vmap <C-c><C-c> <Plug>SendSelectionToTmux
-nmap <C-c><C-c> <Plug>NormalModeSendToTmux
-nmap <C-c>r <Plug>SetTmuxVars
