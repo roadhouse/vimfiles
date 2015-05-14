@@ -1,9 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/RoadHouse/code/spix/busk'
-let g:netrw_dirhist_2='/Users/RoadHouse/code/ruby/choice'
-let g:netrw_dirhist_3='/Users/RoadHouse/.vim'
-let g:netrw_dirhist_4='/home/roadhouse/Dropbox/code/github/bdoc/lib'
-let g:netrw_dirhist_5='/home/roadhouse/Dropbox/code/github/bdoc'
-let g:netrw_dirhist_6='/home/roadhouse/Dropbox/code/github/bdoc/lib'
-let g:netrw_dirhist_7='/home/roadhouse/Dropbox/code/github/bdoc'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/juchoa/.gems/gems/activerecord-session_store-0.1.1/lib/active_record/session_store'
+let g:netrw_dirhist_2='/home/juchoa/.gems/gems/activerecord-session_store-0.1.1/lib/active_record/session_store/extension'
+let g:netrw_dirhist_3='/home/juchoa/.gems/gems/activerecord-session_store-0.1.1/lib/active_record/session_store'
+let g:netrw_dirhist_4='/lib'
+let g:netrw_dirhist_5='/home/juchoa/.rvm/gems/ruby-2.2.1@erp/gems/activerecord-session_store-0.1.1/lib/activerecord'
+let g:netrw_dirhist_6='/home/juchoa/code/painel-parceiro/app/controllers'
