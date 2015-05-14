@@ -20,7 +20,13 @@ Plugin 'kana/vim-smartinput'
 Plugin 'kana/vim-textobj-user'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/gist-vim'
-Plugin 'msanders/snipmate.vim'
+
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmat'
+Plugin 'honza/vim-snippets'
+
+Plugin 'alvan/vim-closetag'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
@@ -31,7 +37,6 @@ Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'vim-scripts/argtextobj.vim'
 Plugin 'vim-scripts/simplefold'
 call vundle#end()
 filetype plugin indent on 
@@ -76,9 +81,7 @@ nnoremap ; :
 nnoremap : ;
 
 " Filetype patterns
-filetype on
 filetype plugin indent on
-filetype indent on
 
 " Tab/indentation configuration
 set softtabstop=2
