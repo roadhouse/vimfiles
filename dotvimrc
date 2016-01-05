@@ -5,12 +5,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Plugin 'gmarik/Vundle.vim'
 
 " My bundles
 Plugin 'mileszs/ack.vim'
-Plugin 'FuzzyFinder'
+" Plugin 'FuzzyFinder'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'L9'
 Plugin 'bling/vim-airline'
 Plugin 'clones/vim-autocomplpop'
@@ -20,7 +21,9 @@ Plugin 'kana/vim-smartinput'
 Plugin 'kana/vim-textobj-user'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/gist-vim'
+Plugin 'ngmy/vim-rubocop'
 
+" Snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
@@ -37,8 +40,17 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-scripts/simplefold'
+
+" Javascript
+Plugin 'pangloss/vim-javascript'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'matthewsimo/angular-vim-snippets'
+Plugin 'claco/jasmine.vim'
+Plugin 'burnettk/vim-angular'
+
+
 call vundle#end()
-filetype plugin indent on 
+filetype plugin indent on
 
 " My configuration
 colorscheme wombat256
@@ -64,6 +76,7 @@ set visualbell
 set wildmenu
 set wildmode=list:longest
 set wrap
+set colorcolumn=80
 
 syntax on
 
@@ -108,6 +121,9 @@ command! Helptags helptags ~/.vim/doc
 " Save when lost focus
 au FocusLost * ;wa
 
+" remove all trailing whitespace when :w
+autocmd BufWritePre * :%s/\s\+$//e
+
 " Make the arrow keys switch between splits
 map <up> <C-w>k
 map <down> <C-w>j
@@ -115,8 +131,8 @@ map <right> <C-w>l
 map <left> <C-w>h
 
 "toggle unfold
-nnoremap <space> za 
-vnoremap <space> za 
+nnoremap <space> za
+vnoremap <space> za
 
 " Navigation between buffers
 map <leader>l ;e#<cr>
@@ -139,25 +155,15 @@ map <leader>ff ;FufCoverageFile<CR>
 let NERDSpaceDelims = 1
 let NERDDefaultNesting = 0
 
-" taglist
-let Tlist_Display_Tag_Scope = 0
-let Tlist_File_Fold_Auto_Close = 1
-let Tlist_Show_Menu = 1
-map <Leader>tg ;TlistToggle<CR>
-map <Leader>th ;TlistHighlightTag<CR>
-map <Leader>tp ;TlistShowPrototype<CR>
-map <Leader>tu ;TlistUpdate<CR>
-
 " Gist
 let g:gist_clip_command = 'pbcopy'
 let g:gist_open_browser_after_post = 1
 
-" Syntastic 
+" Syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
-" Command-T
-set wildignore+=*.o,*.obj,.git,spec/fixtures/cassetes/**,vendor/**,bin_stubs/**
+set wildignore+=*.o,*.obj,.git,*/spec/fixtures/cassetes/**,*/vendor/**,*/bin_stubs/**,*/tmp/**,*/log/**
 au BufRead,BufNewFile {Procfile,Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
 
 " Redraw panel when terminal mess up
@@ -165,3 +171,18 @@ nnoremap <leader>rr ;redraw!<cr>
 
 " Airline
 set laststatus=2
+
+let g:javascript_conceal_function   = "ƒ"
+let g:javascript_conceal_null       = "ø"
+let g:javascript_conceal_this       = "@"
+let g:javascript_conceal_return     = "⇚"
+let g:javascript_conceal_undefined  = "¿"
+let g:javascript_conceal_NaN        = "ℕ"
+let g:javascript_conceal_prototype  = "¶"
+let g:javascript_conceal_static     = "•"
+let g:javascript_conceal_super      = "Ω"
+
+let g:angular_source_directory = 'app/assets/javascripts/'
+let g:angular_test_directory = 'spec/javascripts/'
+
+let g:ctrlp_working_path_mode = 'ra'
