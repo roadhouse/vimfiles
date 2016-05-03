@@ -22,6 +22,7 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/gist-vim'
 Plugin 'ngmy/vim-rubocop'
+Plugin 'skalnik/vim-vroom'
 
 " Snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -163,7 +164,7 @@ let g:gist_open_browser_after_post = 1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
-set wildignore+=*.o,*.obj,.git,*/spec/fixtures/cassetes/**,*/vendor/**,*/bin_stubs/**,*/tmp/**,*/log/**
+set wildignore+=*.o,*.obj,.git,*/spec/cassettes/**,*/vendor/**,*/bin_stubs/**,*/tmp/**,*/log/**
 au BufRead,BufNewFile {Procfile,Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
 
 " Redraw panel when terminal mess up
