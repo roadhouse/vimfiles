@@ -76,6 +76,7 @@ set foldlevel=1
 set hidden
 set history=1000
 set iskeyword-=_,$,@,%,#
+set number
 set preserveindent
 set relativenumber
 set ruler
