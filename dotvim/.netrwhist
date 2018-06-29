@@ -1,7 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/etc/mysql/mysql.conf.d'
 let g:netrw_dirhist_2='/'
 let g:netrw_dirhist_3='/home/jean.uchoa/.config'
 let g:netrw_dirhist_4='/home/jean.uchoa/code/dotfiles/files'
 let g:netrw_dirhist_5='/home/jean.uchoa/code/Smart-System/app/views/contracts/pt-BR'
+let g:netrw_dirhist_6='/home/roadhouse/code/sendorama/spec/webhook/multicast/mkm_http_client_spec.rb'
+let g:netrw_dirhist_7='/home/roadhouse/code/sendorama/spec/webhooks/templates'

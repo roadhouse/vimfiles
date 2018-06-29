@@ -12,7 +12,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'L9'
-Plugin 'itchyny/lightline'
+Plugin 'itchyny/lightline.vim'
 Plugin 'clones/vim-autocomplpop'
 Plugin 'cschlueter/vim-wombat'
 Plugin 'kana/vim-smartinput'
@@ -36,6 +36,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-scripts/simplefold'
+Plugin 'danro/rename.vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'tpope/vim-dispatch'
 
 " Javascript
 Plugin 'pangloss/vim-javascript'
@@ -43,6 +47,10 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'matthewsimo/angular-vim-snippets'
 Plugin 'claco/jasmine.vim'
 Plugin 'burnettk/vim-angular'
+
+
+" Slim
+" Plugin 'slim-template/vim-slim.git'
 
 " let g:ycm_server_keep_logfiles = 1
 " let g:ycm_server_log_level = 'debug'
@@ -148,7 +156,7 @@ au BufRead,BufNewFile {Procfile,Capfile,Gemfile,Rakefile,Thorfile,config.ru,.cap
 map <leader>pc ;r ! pbpaste<CR>
 
 " FuzzyFinder
-let g:fuzzy_ignore = '*.log;*.swp;*~;temp/*;log/*;tmp/*;coverage/*;README;*.jpg;*.png;*.gem'
+let g:fuzzy_ignore = '*.log;*.swp;*~;temp/*;log/*;tmp/*;coverage/*;**//node_modules/*;README;*.jpg;*.png;*.gem'
 let g:fuzzy_enumerating_limit = 15
 let g:fuzzy_matching_limit = 40
 let g:fuzzy_ceiling = 300000
@@ -167,7 +175,7 @@ let g:gist_open_browser_after_post = 1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
-set wildignore+=*.o,*.obj,.git,*/spec/cassettes/**,*/vendor/**,*/bin_stubs/**,*/tmp/**,*/log/**
+set wildignore+=*.o,*.obj,.git,*/spec/cassettes/**,*/vendor/**,*/bin_stubs/**,*/tmp/**,*/log/**,*/node_modules/**
 au BufRead,BufNewFile {Procfile,Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
 
 " Redraw panel when terminal mess up
@@ -192,3 +200,10 @@ let g:angular_test_directory = 'spec/javascripts/'
 let g:ctrlp_working_path_mode = 'ra'
 
 let g:gist_post_private = 1
+
+" Vim-rspec
+let g:rspec_command = "Dispatch rspec {spec}"
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+" map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
