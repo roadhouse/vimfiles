@@ -1,52 +1,50 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'alvan/vim-closetag'
+" Plug 'clones/vim-autocomplpop'
+Plug 'cschlueter/vim-wombat'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'danro/rename.vim'
+Plug 'easymotion/vim-easymotion'
+" Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'kana/vim-smartinput'
+Plug 'kana/vim-textobj-user'
+Plug 'kassio/neoterm'
+" Plug 'eparreno/vim-l9'
+Plug 'mattn/gist-vim'
+Plug 'mattn/webapi-vim'
+Plug 'mileszs/ack.vim'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'ngmy/vim-rubocop'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+" Plug 'thoughtbot/vim-rspec'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-ruby/vim-ruby'
+Plug 'vim-scripts/simplefold'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" Snippets
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+
+" Javascript
+Plug 'pangloss/vim-javascript'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
+
+call plug#end()
+
 " Basic setup
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle
-" required!
-Plugin 'VundleVim/Vundle.vim'
-
-" My bundles
-Plugin 'alvan/vim-closetag'
-Plugin 'clones/vim-autocomplpop'
-Plugin 'cschlueter/vim-wombat'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'danro/rename.vim'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'itchyny/lightline.vim'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'kana/vim-smartinput'
-Plugin 'kana/vim-textobj-user'
-Plugin 'kassio/neoterm'
-Plugin 'L9'
-Plugin 'mattn/gist-vim'
-Plugin 'mattn/webapi-vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'ngmy/vim-rubocop'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-rails'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'vim-scripts/simplefold'
-" Plugin 'wakatime/vim-wakatime'
-
-" Snippets
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
-
-" Javascript
-Plugin 'pangloss/vim-javascript'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'MaxMEllon/vim-jsx-pretty'
-
-call vundle#end()
 filetype plugin indent on
 
 " My configuration
@@ -163,6 +161,9 @@ let g:gist_post_private = 1
 " Syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
+
+" Snipmate
+let g:snipMate = { 'snippet_version' : 1 }
 
 set wildignore+=*.o,*.obj,.git,*/spec/cassettes/**,*/vendor/**,*/bin_stubs/**,*/tmp/**,*/log/**,*/node_modules/**,*/tools/**
 au BufRead,BufNewFile {Procfile,Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
