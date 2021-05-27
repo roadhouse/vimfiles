@@ -6,101 +6,67 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'danro/rename.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
-Plug 'kana/vim-smartinput'
-Plug 'kana/vim-textobj-user'
 Plug 'kassio/neoterm'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mileszs/ack.vim'
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'ngmy/vim-rubocop'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/simplefold'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
+Plug 'sheerun/vim-polyglot'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Snippets
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+" Ruby
+Plug 'tpope/vim-rails'
+Plug 'ngmy/vim-rubocop'
 
-" Javascript
-Plug 'pangloss/vim-javascript'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'MaxMEllon/vim-jsx-pretty'
-
-" Python
-Plug 'numirias/semshi'
 call plug#end()
 
 " Basic setup
-set nocompatible
-filetype off
 filetype plugin indent on
-
-" My configuration
 colorscheme wombat256
-
-runtime macros/matchit.vim
-
 set autoindent
+set colorcolumn=80
 set complete=.,t
 set cursorcolumn
 set cursorline
-set foldmethod=indent
+set expandtab
 set foldlevel=1
+set foldmethod=indent
 set hidden
 set history=1000
+set hlsearch
+set ignorecase
+set incsearch
 set iskeyword+=_,@-@,?,!
 set number
 set preserveindent
 set relativenumber
 set ruler
 set scrolloff=3
+set shiftwidth=2
 set showmatch
+set smartcase
+set smartindent
+set smarttab
+set softtabstop=2
 set title
 set visualbell
+set wildignore+=*.o,*.obj,.git,*/spec/cassettes/**,*/vendor/**,*/bin_stubs/**,*/tmp/**,*/log/**,*/node_modules/**,*/tools/**
 set wildmenu
 set wildmode=list:longest
 set wrap
-set colorcolumn=80
-
 syntax on
-
-" Setup backup location and enable
-set backup
-set backupdir=/tmp
-set directory=/tmp
 
 " Set <Leader> to comma
 let mapleader = ','
 
-" Change normal mode leader
+" Change normal mode leader (avoid use shift)
 nnoremap ; :
 nnoremap : ;
-
-" Filetype patterns
-filetype plugin indent on
-
-" Tab/indentation configuration
-set softtabstop=2
-set shiftwidth=2
-set expandtab
-set smarttab
-set ai " autoindent
-set si " smartindent
-
-" Search pattern highlight/incremental
-set ignorecase
-set smartcase
-set showmatch
-set hlsearch
-set incsearch
 
 " alias
 ab pry require 'pry';binding.pry
@@ -137,13 +103,9 @@ au BufRead, BufNewFile *.php
 " Copy from clipboard
 map <leader>pc ;r ! pbpaste<CR>
 
-" FuzzyFinder
-let g:fuzzy_ignore = '*.log;*.swp;*~;temp/*;log/*;tmp/*;coverage/*;**//node_modules/*;README;*.jpg;*.png;*.gem'
-let g:fuzzy_enumerating_limit = 15
-let g:fuzzy_matching_limit = 40
-let g:fuzzy_ceiling = 300000
-map <leader>bb ;FufBuffer<CR>
-map <leader>ff ;FufCoverageFile<CR>
+" Make transparency works
+hi! Normal ctermbg=NONE guibg=NONE
+hi! NonText ctermbg=NONE guibg=NONE
 
 " NERDCommenter
 let NERDSpaceDelims = 1
@@ -158,17 +120,47 @@ let g:gist_post_private = 1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
-" Snipmate
-let g:snipMate = { 'snippet_version' : 1 }
-
-set wildignore+=*.o,*.obj,.git,*/spec/cassettes/**,*/vendor/**,*/bin_stubs/**,*/tmp/**,*/log/**,*/node_modules/**,*/tools/**
-au BufRead,BufNewFile {Procfile,Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
-
 " Redraw panel when terminal mess up
 nnoremap <leader>rr ;redraw!<cr>
 
-" Airline
-set laststatus=2
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-hi! Normal ctermbg=NONE guibg=NONE
-hi! NonText ctermbg=NONE guibg=NONE
+" coc
+set nobackup
+set nowritebackup
+set encoding=utf-8
+set hidden
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+" To make <cr> select the first completion item and confirm the completion when no item has been selected
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+" to make coc.nvim format your code on <cr>
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
