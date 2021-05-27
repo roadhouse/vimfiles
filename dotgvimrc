@@ -1,8 +1,0 @@
-set go-=T
-set guioptions-=r
-set lines=10000
-set columns=10000
-set guifont=Monaco:h14
-set guioptions-=l
-set guioptions-=b
-colorscheme jellybeans 

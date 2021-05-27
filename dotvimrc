@@ -1,17 +1,14 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'alvan/vim-closetag'
-" Plug 'clones/vim-autocomplpop'
 Plug 'cschlueter/vim-wombat'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'danro/rename.vim'
 Plug 'easymotion/vim-easymotion'
-" Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kana/vim-smartinput'
 Plug 'kana/vim-textobj-user'
 Plug 'kassio/neoterm'
-" Plug 'eparreno/vim-l9'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mileszs/ack.vim'
@@ -19,15 +16,12 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'ngmy/vim-rubocop'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-" Plug 'thoughtbot/vim-rspec'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/simplefold'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -40,6 +34,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 
+" Python
+Plug 'numirias/semshi'
 call plug#end()
 
 " Basic setup
