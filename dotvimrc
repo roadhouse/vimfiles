@@ -15,6 +15,7 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-scripts/simplefold'
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-surround'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Snippets
 Plug 'SirVer/ultisnips'
